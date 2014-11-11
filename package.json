@@ -1,0 +1,23 @@
+{
+  "name": "github-page",
+  "scripts": {
+    "start": "npm run build && browser-sync start --server build --port 8080 --files='{repos,lib}/*'",
+    "build": "npm run build-site && npm run build-css && npm run build-js",
+    "build-site": "metalsmith",
+    "build-css": "duo --use duo-myth lib/styles.css > build/styles.css",
+    "build-js": "duo lib/index.js > build/index.js",
+    "clean": "npm run clean-dist && rm -fr components node_modules",
+    "clean-dist": "rm -fr build"
+  },
+  "devDependencies": {
+    "duo": "^0.8.4",
+    "duo-myth": "0.0.3",
+    "metalsmith": "^0.11.0",
+    "metalsmith-assets": "0.0.1",
+    "metalsmith-collections": "^0.6.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.4.0",
+    "metalsmith-templates": "^0.5.2",
+    "swig": "^1.4.2"
+  }
+}

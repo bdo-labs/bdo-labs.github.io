@@ -1,0 +1,27 @@
+<main>
+  <aside>
+    <a class="dock" href="#"><i class="ion-ios7-arrow-left"></i></a>
+    <h5>Collaborators</h5>
+    <hr>
+    <h5>Repositories</h5>
+    <nav>
+      {% for repo in repos %}
+      <a href="/{{ repo.title }}/">
+        {% if repo.title != 'home' %}
+        <i class="ion-fork-repo"></i>
+        {% endif %}
+        {{ repo.title }}
+      </a>
+      {% endfor %}
+    </nav>
+  </aside>
+  <article>
+    <header>
+      <h5>v {{ version }}</h5>
+      <time>{{ date | date('Y-m-d') }}</time>
+    </header>
+    <section>
+      {{ contents | safe }}
+    </section>
+  </article>
+</main>
