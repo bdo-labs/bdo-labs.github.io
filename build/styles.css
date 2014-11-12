@@ -455,8 +455,8 @@ th {
 
 @font-face {
   font-family: "Ionicons";
-  src: url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot");
-  src: url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot") format("embedded-opentype"), url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.ttf") format("truetype"), url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.woff") format("woff"), url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.svg") format("svg");
+  src: url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot");
+  src: url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot") format("embedded-opentype"), url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.ttf") format("truetype"), url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.woff") format("woff"), url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
