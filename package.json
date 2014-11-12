@@ -4,8 +4,8 @@
     "start": "serve build",
     "build": "npm run build-site && npm run build-css && npm run build-js",
     "build-site": "metalsmith",
-    "build-css": "duo --use duo-myth lib/styles.css > build/styles.css",
-    "build-js": "duo lib/index.js > build/index.js",
+    "build-css": "duo --copy --use duo-myth lib/styles.css > build/styles.css",
+    "build-js": "duo --copy lib/index.js > build/index.js",
     "clean": "npm run clean-dist && rm -fr components node_modules",
     "clean-dist": "rm -fr build"
   },
