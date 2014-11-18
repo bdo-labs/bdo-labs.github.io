@@ -108,7 +108,6 @@ GET /cards?indicators=true
 ```javascript
 [{
   "id": "23465b43532...",
-  "type": "Card",
   "title": "foretaksservice",
   "description": "fremtidens regnskapstjenester levert i dag",
   "created_at": "2015-01-01T12:00:00Z",
@@ -130,36 +129,33 @@ GET /cards?indicators=true
       "id": "72542b234523b..."
       "category": "økonomi",
       "title": "omsetning",
+      "direction": -1,
+      "status": "warning",
       "description": "her kan det skrives tekst etter behov",
       "order": 1,
-      "frequency": "001**",
-      "trending": true,
-      "unit": "nok",
-      "lower": [
+      "indicators": [
         {
+          "id": "2345a23b5ab...",
+          "frequency": "monthly",
+          "status": "good",
+          "direction": 1,
+          "unit": "nok",
+          "tags": ["foretaksservice"],
+          "create_at": "2015-01-01T12:00:00Z",
           "updated_at": "2015-01-01T12:00:00Z",
-          "value": 200000
+          "owner": {
+            "id": "32bdd2b3...",
+            "groups": ["digitale tjenester","fest komité"],
+            "name": "Snorre Nævdal",
+            "email": "snorre.naevdal@bdo.no",
+            "created_at": "2014-05-05T12:00:00Z",
+            "updated_at": "2014-05-05T12:00:00Z"
+          },
+          "payload": {
+            "id": "24643ba52b..."
+          }
         }
-      ],
-      "target": [
-        {
-          "updated_at": "2015-01-01T12:00:00Z",
-          "value": 264800
-        }
-      ],
-      "value": [
-        {
-          "updated_at": "2015-01-01T12:00:00Z",
-          "value": 210600
-        }
-      ],
-      "tags": ["foretaksservice"],
-      "payload": [],
-      "create_at": "2015-01-01T12:00:00Z",
-      "updated_at": "2015-01-01T12:00:00Z",
-      "owner": {
-        "id": "32bdd2b3..."
-      }
+      ]
     }
   ]
 }]
@@ -176,42 +172,33 @@ GET /indicator/:{slug,id}?expand=owner
   "id": "72542b234523b..."
   "category": "økonomi",
   "title": "omsetning",
+  "direction": -1,
+  "status": "warning",
   "description": "her kan det skrives tekst etter behov",
   "order": 1,
-  "frequency": "001**",
-  "trending": true,
-  "unit": "nok",
-  "lower": [
+  "indicators": [
     {
+      "id": "2345a23b5ab...",
+      "frequency": "monthly",
+      "status": "good",
+      "direction": 1,
+      "unit": "nok",
+      "tags": ["foretaksservice"],
+      "create_at": "2015-01-01T12:00:00Z",
       "updated_at": "2015-01-01T12:00:00Z",
-      "value": 200000
+      "owner": {
+        "id": "32bdd2b3...",
+        "groups": ["digitale tjenester","fest komité"],
+        "name": "Snorre Nævdal",
+        "email": "snorre.naevdal@bdo.no",
+        "created_at": "2014-05-05T12:00:00Z",
+        "updated_at": "2014-05-05T12:00:00Z"
+      },
+      "payload": {
+        "id": "24643ba52b..."
+      }
     }
-  ],
-  "target": [
-    {
-      "updated_at": "2015-01-01T12:00:00Z",
-      "value": 264800
-    }
-  ],
-  "value": [
-    {
-      "updated_at": "2015-01-01T12:00:00Z",
-      "value": 210600
-    }
-  ],
-  "tags": ["foretaksservice"],
-  "payload": [],
-  "create_at": "2015-01-01T12:00:00Z",
-  "updated_at": "2015-01-01T12:00:00Z",
-  "owner": {
-    "id": "32bdd2b3...",
-    "groups": ["digitale tjenester","fest komité"],
-    "name": "Snorre Nævdal",
-    "email": "snorre.naevdal@bdo.no",
-    "created_at": "2014-05-05T12:00:00Z",
-    "updated_at": "2014-05-05T12:00:00Z",
-    "foo": "bar"
-  }
+  ]
 }
 ```
 
@@ -220,7 +207,6 @@ GET /indicator/:{slug,id}?expand=owner
 ```http
 GET /task/:{slug,id}?expand=owner,assignee
 ```
-
 
 #### Retrieve a list of all users.
 

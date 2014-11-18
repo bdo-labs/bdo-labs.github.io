@@ -23,28 +23,26 @@
   <aside>
     <a class="dock" href="#"><i class="ion-ios7-arrow-left"></i></a>
     <h5>Collaborators</h5>
+    
+      <img class="photo" src="http://www.gravatar.com/avatar/b816a20e685a01bcf8b9e230fe23db09" alt="Henrik Kjelsberg" title="Henrik Kjelsberg" />
+    
     <hr>
-    <h5>Repositories</h5>
     <nav>
+      <h5><a href="/" rel="index">Repositories</a></h5>
       
-      <a href="/home/">
         
-        home
-      </a>
+        <a href="/api">
+          <i class="ion-fork-repo"></i> api
+        </a>
+        
       
-      <a href="/api/">
         
-        <i class="ion-fork-repo"></i>
+        <a href="/serve">
+          <i class="ion-fork-repo"></i> serve
+        </a>
         
-        api
-      </a>
       
-      <a href="/serve/">
         
-        <i class="ion-fork-repo"></i>
-        
-        serve
-      </a>
       
     </nav>
   </aside>
@@ -113,7 +111,6 @@ client, much easier.</p>
 </code></pre>
 <pre><code class="lang-javascript">[{
   &quot;id&quot;: &quot;23465b43532...&quot;,
-  &quot;type&quot;: &quot;Card&quot;,
   &quot;title&quot;: &quot;foretaksservice&quot;,
   &quot;description&quot;: &quot;fremtidens regnskapstjenester levert i dag&quot;,
   &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
@@ -135,36 +132,33 @@ client, much easier.</p>
       &quot;id&quot;: &quot;72542b234523b...&quot;
       &quot;category&quot;: &quot;økonomi&quot;,
       &quot;title&quot;: &quot;omsetning&quot;,
+      &quot;direction&quot;: -1,
+      &quot;status&quot;: &quot;warning&quot;,
       &quot;description&quot;: &quot;her kan det skrives tekst etter behov&quot;,
       &quot;order&quot;: 1,
-      &quot;frequency&quot;: &quot;001**&quot;,
-      &quot;trending&quot;: true,
-      &quot;unit&quot;: &quot;nok&quot;,
-      &quot;lower&quot;: [
+      &quot;indicators&quot;: [
         {
+          &quot;id&quot;: &quot;2345a23b5ab...&quot;,
+          &quot;frequency&quot;: &quot;monthly&quot;,
+          &quot;status&quot;: &quot;good&quot;,
+          &quot;direction&quot;: 1,
+          &quot;unit&quot;: &quot;nok&quot;,
+          &quot;tags&quot;: [&quot;foretaksservice&quot;],
+          &quot;create_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
           &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-          &quot;value&quot;: 200000
+          &quot;owner&quot;: {
+            &quot;id&quot;: &quot;32bdd2b3...&quot;,
+            &quot;groups&quot;: [&quot;digitale tjenester&quot;,&quot;fest komité&quot;],
+            &quot;name&quot;: &quot;Snorre Nævdal&quot;,
+            &quot;email&quot;: &quot;snorre.naevdal@bdo.no&quot;,
+            &quot;created_at&quot;: &quot;2014-05-05T12:00:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2014-05-05T12:00:00Z&quot;
+          },
+          &quot;payload&quot;: {
+            &quot;id&quot;: &quot;24643ba52b...&quot;
+          }
         }
-      ],
-      &quot;target&quot;: [
-        {
-          &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-          &quot;value&quot;: 264800
-        }
-      ],
-      &quot;value&quot;: [
-        {
-          &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-          &quot;value&quot;: 210600
-        }
-      ],
-      &quot;tags&quot;: [&quot;foretaksservice&quot;],
-      &quot;payload&quot;: [],
-      &quot;create_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-      &quot;owner&quot;: {
-        &quot;id&quot;: &quot;32bdd2b3...&quot;
-      }
+      ]
     }
   ]
 }]
@@ -176,42 +170,33 @@ client, much easier.</p>
   &quot;id&quot;: &quot;72542b234523b...&quot;
   &quot;category&quot;: &quot;økonomi&quot;,
   &quot;title&quot;: &quot;omsetning&quot;,
+  &quot;direction&quot;: -1,
+  &quot;status&quot;: &quot;warning&quot;,
   &quot;description&quot;: &quot;her kan det skrives tekst etter behov&quot;,
   &quot;order&quot;: 1,
-  &quot;frequency&quot;: &quot;001**&quot;,
-  &quot;trending&quot;: true,
-  &quot;unit&quot;: &quot;nok&quot;,
-  &quot;lower&quot;: [
+  &quot;indicators&quot;: [
     {
+      &quot;id&quot;: &quot;2345a23b5ab...&quot;,
+      &quot;frequency&quot;: &quot;monthly&quot;,
+      &quot;status&quot;: &quot;good&quot;,
+      &quot;direction&quot;: 1,
+      &quot;unit&quot;: &quot;nok&quot;,
+      &quot;tags&quot;: [&quot;foretaksservice&quot;],
+      &quot;create_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
       &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-      &quot;value&quot;: 200000
+      &quot;owner&quot;: {
+        &quot;id&quot;: &quot;32bdd2b3...&quot;,
+        &quot;groups&quot;: [&quot;digitale tjenester&quot;,&quot;fest komité&quot;],
+        &quot;name&quot;: &quot;Snorre Nævdal&quot;,
+        &quot;email&quot;: &quot;snorre.naevdal@bdo.no&quot;,
+        &quot;created_at&quot;: &quot;2014-05-05T12:00:00Z&quot;,
+        &quot;updated_at&quot;: &quot;2014-05-05T12:00:00Z&quot;
+      },
+      &quot;payload&quot;: {
+        &quot;id&quot;: &quot;24643ba52b...&quot;
+      }
     }
-  ],
-  &quot;target&quot;: [
-    {
-      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-      &quot;value&quot;: 264800
-    }
-  ],
-  &quot;value&quot;: [
-    {
-      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-      &quot;value&quot;: 210600
-    }
-  ],
-  &quot;tags&quot;: [&quot;foretaksservice&quot;],
-  &quot;payload&quot;: [],
-  &quot;create_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-  &quot;owner&quot;: {
-    &quot;id&quot;: &quot;32bdd2b3...&quot;,
-    &quot;groups&quot;: [&quot;digitale tjenester&quot;,&quot;fest komité&quot;],
-    &quot;name&quot;: &quot;Snorre Nævdal&quot;,
-    &quot;email&quot;: &quot;snorre.naevdal@bdo.no&quot;,
-    &quot;created_at&quot;: &quot;2014-05-05T12:00:00Z&quot;,
-    &quot;updated_at&quot;: &quot;2014-05-05T12:00:00Z&quot;,
-    &quot;foo&quot;: &quot;bar&quot;
-  }
+  ]
 }
 </code></pre>
 <h4 id="retrieve-a-list-of-tasks">Retrieve a list of tasks</h4>
