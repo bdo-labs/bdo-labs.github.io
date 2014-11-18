@@ -2,16 +2,18 @@
   <aside>
     <a class="dock" href="#"><i class="ion-ios7-arrow-left"></i></a>
     <h5>Collaborators</h5>
+    {% for name, photo in gravatar.collaborators %}
+      <img class="photo" src="{{photo}}" alt="{{name}}" title="{{name}}" />
+    {% endfor %}
     <hr>
-    <h5>Repositories</h5>
     <nav>
+      <h5><a href="/" rel="index">Repositories</a></h5>
       {% for repo in repos %}
-      <a href="/{{ repo.title }}/">
-        {% if repo.title != 'home' %}
-        <i class="ion-fork-repo"></i>
+        {% if repo.title.length %}
+        <a href="/{{ repo.title }}">
+          <i class="ion-fork-repo"></i> {{ repo.title }}
+        </a>
         {% endif %}
-        {{ repo.title }}
-      </a>
       {% endfor %}
     </nav>
   </aside>

@@ -61,6 +61,11 @@
  * Structure
  */
 
+  .photo {
+    border-radius: 100%;
+    width: 40px;
+  }
+
   html,
   body {
     height: 100%;
@@ -84,7 +89,7 @@
 
   aside {
     left: 0;
-    padding: var(--air) calc(var(--air) * 3);
+    padding: var(--air) calc(var(--air) * 2);
     position: absolute;
     top: 0;
     width: 24em;

@@ -5,6 +5,11 @@
     "description": "Documentation, guidelines and showcases"
   },
   "plugins": {
+    "metalsmith-gravatar": {
+      "collaborators": {
+        "Henrik Kjelsberg": "hkjels@me.com"
+      }
+    },
     "metalsmith-collections": {
       "repos": "./repos/*.md"
     },

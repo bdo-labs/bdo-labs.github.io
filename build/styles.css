@@ -455,8 +455,8 @@ th {
 
 @font-face {
   font-family: "Ionicons";
-  src: url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot");
-  src: url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot") format("embedded-opentype"), url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.ttf") format("truetype"), url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.woff") format("woff"), url("components/driftyco-ionicons@v1.5.2/fonts/ionicons.svg") format("svg");
+  src: url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot");
+  src: url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.eot") format("embedded-opentype"), url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.ttf") format("truetype"), url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.woff") format("woff"), url("../components/driftyco-ionicons@v1.5.2/fonts/ionicons.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3636,6 +3636,11 @@ time {
  * Structure
  */
 
+.photo {
+  border-radius: 100%;
+  width: 40px;
+}
+
 html,
 body {
   height: 100%;
@@ -3659,7 +3664,7 @@ nav a {
 
 aside {
   left: 0;
-  padding: 2.5em 7.5em;
+  padding: 2.5em 5em;
   position: absolute;
   top: 0;
   width: 24em;

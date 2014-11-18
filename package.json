@@ -1,13 +1,19 @@
 {
   "name": "github-page",
+  "description": "Documentation, guidelines and showcases",
+  "author": "Henrik Kjelsberg <henrik.kjelsberg@bdo.no>",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "serve build",
     "build": "npm run build-site && npm run build-css && npm run build-js",
-    "build-site": "metalsmith",
     "build-css": "duo --copy --use duo-myth lib/styles.css > build/styles.css",
     "build-js": "duo --copy lib/index.js > build/index.js",
+    "build-site": "metalsmith",
     "clean": "npm run clean-dist && rm -fr components node_modules",
-    "clean-dist": "rm -fr build"
+    "clean-dist": "rm -fr build",
+    "deploy": "git subtree push --prefix build origin master",
+    "post-install": "npm run build",
+    "start": "serve build"
   },
   "devDependencies": {
     "duo": "^0.8.4",
@@ -15,8 +21,10 @@
     "metalsmith": "^0.11.0",
     "metalsmith-assets": "0.0.1",
     "metalsmith-collections": "^0.6.0",
+    "metalsmith-gravatar": "^0.1.0",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-permalinks": "^0.4.0",
+    "metalsmith-serve": "0.0.1",
     "metalsmith-templates": "^0.5.2",
     "serve": "^1.4.0",
     "swig": "^1.4.2"
