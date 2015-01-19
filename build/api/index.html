@@ -26,6 +26,8 @@
     
       <img class="photo" src="http://www.gravatar.com/avatar/b816a20e685a01bcf8b9e230fe23db09" alt="Henrik Kjelsberg" title="Henrik Kjelsberg" />
     
+      <img class="photo" src="http://www.gravatar.com/avatar/2bf535e98362544a379ccc8335fdafdf" alt="Snorre Nævdal" title="Snorre Nævdal" />
+    
     <hr>
     <nav>
       <h5><a href="/" rel="index">Repositories</a></h5>
@@ -107,61 +109,71 @@ client, much easier.</p>
 </code></pre>
 <h4 id="retrieve-cards">Retrieve cards</h4>
 <p>Note that <code>/cards</code> is a short-hand for <code>/org/cards</code>.</p>
-<pre><code class="lang-http">GET /cards?indicators=true
+<pre><code class="lang-http">GET /cards
 </code></pre>
-<pre><code class="lang-javascript">[{
-  &quot;id&quot;: &quot;23465b43532...&quot;,
-  &quot;title&quot;: &quot;foretaksservice&quot;,
-  &quot;description&quot;: &quot;fremtidens regnskapstjenester levert i dag&quot;,
-  &quot;created_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-  &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-  &quot;status&quot;: &quot;good&quot;,
-  &quot;owner&quot;: {
-    &quot;id&quot;: &quot;32bdd2b3...&quot;,
-    &quot;name&quot;: &quot;Snorre Nævdal&quot;,
-    &quot;email&quot;: &quot;snorre.naevdal@bdo.no&quot;,
-    &quot;foo&quot;: &quot;bar&quot;
-  },
-  &quot;followers&quot;: [
+<pre><code class="lang-javascript">{
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;Lederkortet&quot;,
+        &quot;description&quot;: null,
+        &quot;createdtime&quot;: &quot;2014-12-11T18:03:44.95&quot;,
+        &quot;updatedtime&quot;: &quot;2014-12-11T18:03:44.95&quot;,
+        &quot;status&quot;: &quot;good&quot;,
+        &quot;owner&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;eva&quot;,
+            &quot;email&quot;: &quot;snna@bdo.no&quot;
+        },
+        &quot;categories&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Medlemsnytte&quot;,
+                &quot;order&quot;: 1,
+                &quot;status&quot;: &quot;good&quot;,
+                &quot;trend&quot;: &quot;good&quot;,
+                &quot;indicators&quot;: [
+                    {
+                        &quot;id&quot;: 1,
+                        &quot;title&quot;: &quot;50 igangsatte boliger pr år&quot;,
+                        &quot;description&quot;: null,
+                        &quot;order&quot;: 0,
+                        &quot;frequency&quot;: &quot;Monthly&quot;,
+                        &quot;direction&quot;: &quot;Equal&quot;,
+                        &quot;unit&quot;: &quot;%&quot;,
+                        &quot;value&quot;: 10,
+                        &quot;goal&quot;: 15,
+                        &quot;status&quot;: &quot;good&quot;,
+                        &quot;trend&quot;: &quot;good&quot;
+                    },
+                    {
+                        &quot;id&quot;: 2,
+                        &quot;title&quot;: &quot;Nettovekst boliger til forvaltning&quot;,
+                        &quot;description&quot;: null,
+                        &quot;order&quot;: 0,
+                        &quot;frequency&quot;: &quot;Monthly&quot;,
+                        &quot;direction&quot;: &quot;Equal&quot;,
+                        &quot;unit&quot;: &quot;&quot;,
+                        &quot;value&quot;: 10,
+                        &quot;goal&quot;: 15,
+                        &quot;status&quot;: &quot;good&quot;,
+                        &quot;trend&quot;: &quot;good&quot;
+                    }
+                ]
+            }
+        ]
+    },
     {
-      &quot;id&quot;: &quot;8764ab4a9b4...&quot;
-    }
-  ],
-  &quot;indicators&quot;: [
-    {
-      &quot;id&quot;: &quot;72542b234523b...&quot;
-      &quot;category&quot;: &quot;økonomi&quot;,
-      &quot;title&quot;: &quot;omsetning&quot;,
-      &quot;direction&quot;: -1,
-      &quot;status&quot;: &quot;warning&quot;,
-      &quot;description&quot;: &quot;her kan det skrives tekst etter behov&quot;,
-      &quot;order&quot;: 1,
-      &quot;indicators&quot;: [
-        {
-          &quot;id&quot;: &quot;2345a23b5ab...&quot;,
-          &quot;frequency&quot;: &quot;monthly&quot;,
-          &quot;status&quot;: &quot;good&quot;,
-          &quot;direction&quot;: 1,
-          &quot;unit&quot;: &quot;nok&quot;,
-          &quot;tags&quot;: [&quot;foretaksservice&quot;],
-          &quot;create_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-          &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-          &quot;owner&quot;: {
-            &quot;id&quot;: &quot;32bdd2b3...&quot;,
-            &quot;groups&quot;: [&quot;digitale tjenester&quot;,&quot;fest komité&quot;],
-            &quot;name&quot;: &quot;Snorre Nævdal&quot;,
-            &quot;email&quot;: &quot;snorre.naevdal@bdo.no&quot;,
-            &quot;created_at&quot;: &quot;2014-05-05T12:00:00Z&quot;,
-            &quot;updated_at&quot;: &quot;2014-05-05T12:00:00Z&quot;
-          },
-          &quot;payload&quot;: {
-            &quot;id&quot;: &quot;24643ba52b...&quot;
-          }
-        }
-      ]
-    }
-  ]
-}]
+        &quot;id&quot;: 2,
+        &quot;title&quot;: &quot;Styrekortet&quot;,
+        &quot;description&quot;: null,
+        &quot;createdtime&quot;: &quot;2014-12-11T18:03:44.983&quot;,
+        &quot;updatedtime&quot;: &quot;2014-12-11T18:03:44.983&quot;,
+        &quot;status&quot;: &quot;good&quot;,
+        &quot;owner&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;eva&quot;,
+            &quot;email&quot;: &quot;snna@bdo.no&quot;
+        },
+        &quot;categories&quot;: [
 </code></pre>
 <h4 id="retrieve-an-indicator-object">Retrieve an indicator object</h4>
 <pre><code class="lang-http">GET /indicator/:{slug,id}?expand=owner
