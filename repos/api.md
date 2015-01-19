@@ -102,63 +102,73 @@ HTTP/1.1 429 Too Many Requests
 Note that `/cards` is a short-hand for `/org/cards`.
 
 ```http
-GET /cards?indicators=true
+GET /cards
 ```
 
 ```javascript
-[{
-  "id": "23465b43532...",
-  "title": "foretaksservice",
-  "description": "fremtidens regnskapstjenester levert i dag",
-  "created_at": "2015-01-01T12:00:00Z",
-  "updated_at": "2015-01-01T12:00:00Z",
-  "status": "good",
-  "owner": {
-    "id": "32bdd2b3...",
-    "name": "Snorre Nævdal",
-    "email": "snorre.naevdal@bdo.no",
-    "foo": "bar"
-  },
-  "followers": [
+{
+        "id": 1,
+        "title": "Lederkortet",
+        "description": null,
+        "createdtime": "2014-12-11T18:03:44.95",
+        "updatedtime": "2014-12-11T18:03:44.95",
+        "status": "good",
+        "owner": {
+            "id": 5,
+            "name": "eva",
+            "email": "snna@bdo.no"
+        },
+        "categories": [
+            {
+                "id": 1,
+                "name": "Medlemsnytte",
+                "order": 1,
+                "status": "good",
+                "trend": "good",
+                "indicators": [
+                    {
+                        "id": 1,
+                        "title": "50 igangsatte boliger pr år",
+                        "description": null,
+                        "order": 0,
+                        "frequency": "Monthly",
+                        "direction": "Equal",
+                        "unit": "%",
+                        "value": 10,
+                        "goal": 15,
+                        "status": "good",
+                        "trend": "good"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Nettovekst boliger til forvaltning",
+                        "description": null,
+                        "order": 0,
+                        "frequency": "Monthly",
+                        "direction": "Equal",
+                        "unit": "",
+                        "value": 10,
+                        "goal": 15,
+                        "status": "good",
+                        "trend": "good"
+                    }
+                ]
+            }
+        ]
+    },
     {
-      "id": "8764ab4a9b4..."
-    }
-  ],
-  "indicators": [
-    {
-      "id": "72542b234523b..."
-      "category": "økonomi",
-      "title": "omsetning",
-      "direction": -1,
-      "status": "warning",
-      "description": "her kan det skrives tekst etter behov",
-      "order": 1,
-      "indicators": [
-        {
-          "id": "2345a23b5ab...",
-          "frequency": "monthly",
-          "status": "good",
-          "direction": 1,
-          "unit": "nok",
-          "tags": ["foretaksservice"],
-          "create_at": "2015-01-01T12:00:00Z",
-          "updated_at": "2015-01-01T12:00:00Z",
-          "owner": {
-            "id": "32bdd2b3...",
-            "groups": ["digitale tjenester","fest komité"],
-            "name": "Snorre Nævdal",
-            "email": "snorre.naevdal@bdo.no",
-            "created_at": "2014-05-05T12:00:00Z",
-            "updated_at": "2014-05-05T12:00:00Z"
-          },
-          "payload": {
-            "id": "24643ba52b..."
-          }
-        }
-      ]
-    }
-  ]
-}]
+        "id": 2,
+        "title": "Styrekortet",
+        "description": null,
+        "createdtime": "2014-12-11T18:03:44.983",
+        "updatedtime": "2014-12-11T18:03:44.983",
+        "status": "good",
+        "owner": {
+            "id": 5,
+            "name": "eva",
+            "email": "snna@bdo.no"
+        },
+        "categories": [
 ```
 
 #### Retrieve an indicator object
