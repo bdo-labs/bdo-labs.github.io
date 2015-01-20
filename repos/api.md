@@ -97,12 +97,10 @@ HTTP/1.1 429 Too Many Requests
 
 
 
-#### Retrieve cards
-
-Note that `/cards` is a short-hand for `/org/cards`.
+#### Retrieve scorecards
 
 ```http
-GET /cards
+GET /scorecard/:{id}
 ```
 
 ```javascript
@@ -174,38 +172,29 @@ GET /cards
 #### Retrieve an indicator object
 
 ```http
-GET /indicator/:{slug,id}?expand=owner
+GET /indicator/id
 ```
 
 ```javascript
 {
-  "id": "72542b234523b..."
-  "category": "økonomi",
-  "title": "omsetning",
-  "direction": -1,
-  "status": "warning",
-  "description": "her kan det skrives tekst etter behov",
-  "order": 1,
-  "indicators": [
-    {
-      "id": "2345a23b5ab...",
-      "frequency": "monthly",
-      "status": "good",
-      "direction": 1,
-      "unit": "nok",
-      "tags": ["foretaksservice"],
-      "create_at": "2015-01-01T12:00:00Z",
-      "updated_at": "2015-01-01T12:00:00Z",
-      "owner": {
-        "id": "32bdd2b3...",
-        "groups": ["digitale tjenester","fest komité"],
-        "name": "Snorre Nævdal",
-        "email": "snorre.naevdal@bdo.no",
-        "created_at": "2014-05-05T12:00:00Z",
-        "updated_at": "2014-05-05T12:00:00Z"
+ "id": 4,
+    "title": "Oppslag i media",
+    "description": null,
+    "order": 0,
+    "frequency": "Monthly",
+    "direction": "Equal",
+    "unit": "",
+    "value": 631889,
+    "goal": 990694,
+    "status": "bad",
+    "trend": "down"
+    "values": [
+      {
+     
       },
-      "payload": {
-        "id": "24643ba52b..."
+    "target": [
+      {
+     
       }
     }
   ]
