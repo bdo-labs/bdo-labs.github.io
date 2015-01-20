@@ -177,28 +177,60 @@ GET /indicator/id
 
 ```javascript
 {
- "id": 4,
-    "title": "Oppslag i media",
-    "description": null,
-    "order": 0,
-    "frequency": "Monthly",
-    "direction": "Equal",
-    "unit": "",
-    "value": 631889,
-    "goal": 990694,
-    "status": "bad",
-    "trend": "down"
-    "values": [
-      {
-     
-      },
-    "targets": [
-      {
-     
-      }
+  "id": 4,
+  "title": "Oppslag i media",
+  "description": null,
+  "order": 0,
+  "frequency": "Monthly",
+  "direction": "Equal",
+  "unit": "",
+  "value": 631889,
+  "goal": 990694,
+  "status": "bad",
+  "trend": "down"
+  "values": 
+  [
+    {
+        "$id": "2",
+        "date": "2014-01-01T00:00:00",
+        "value": 1371
+    },
+    {
+        "$id": "3",
+        "date": "2014-02-01T00:00:00",
+        "value": 4959
+    },
+    {
+        "$id": "4",
+        "date": "2014-03-01T00:00:00",
+        "value": 4959
+    }
+  ],
+  "targets": 
+  [
+    {
+        "$id": "110",
+        "date": "2014-01-01T00:00:00",
+        "value": 645
+    },
+    {
+        "$id": "111",
+        "date": "2014-02-01T00:00:00",
+        "value": 4950
+    },
+    {
+        "$id": "112",
+        "date": "2014-03-01T00:00:00",
+        "value": 4950
+    },
+    {
+        "$id": "113",
+        "date": "2014-04-01T00:00:00",
+        "value": 9256
     }
   ]
 }
+
 ```
 
 #### Retrieve a list of tasks
