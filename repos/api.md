@@ -192,7 +192,7 @@ GET /indicator/id
       {
      
       },
-    "target": [
+    "targets": [
       {
      
       }
