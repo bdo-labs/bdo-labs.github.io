@@ -236,7 +236,40 @@ GET /indicator/id
 #### Retrieve a list of tasks
 
 ```http
-GET /task/:{slug,id}?expand=owner,assignee
+GET /task/:{id}
+```
+
+```javascript
+[
+    {
+        "$id": "1",
+        "id": 17,
+        "title": "ut ut consectetuer dolor ipsum magna. elit diam ipsum elit dolore nibh. ",
+        "description": "ut ut consectetuer dolor ipsum magna",
+        "deadline": "2014-12-11T22:12:19.847",
+        "status": "Ikke påbegynt",
+        "priority": "Lav",
+        "tagstring": "50 igangsatte boliger pr år",
+        "createdtime": "2014-12-11T22:12:19.927",
+        "updatedtime": "2014-12-11T22:12:19.927",
+        "createdby": null,
+        "updatedby": null
+    },
+    {
+        "$id": "2",
+        "id": 18,
+        "title": "dolore adipiscing euismod laoreet sed elit. laoreet euismod adipiscing ut aliquam dolor. ",
+        "description": "dolore adipiscing euismod laoreet sed elit laoreet euismod adipiscing ut aliquam dolor magna erat aliquam dolor euismod consectetuer elit euismod dolor aliquam ut adipiscing sit diam diam. amet magna nibh magna amet elit diam euismod euismod elit magna",
+        "deadline": "2014-12-11T22:12:19.847",
+        "status": "Påbegynt i rute",
+        "priority": "Lav",
+        "tagstring": "50 igangsatte boliger pr år",
+        "createdtime": "2014-12-11T22:12:20.087",
+        "updatedtime": "2014-12-11T22:12:20.087",
+        "createdby": null,
+        "updatedby": null
+    },
+
 ```
 
 #### Retrieve a list of all users.
