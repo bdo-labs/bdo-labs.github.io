@@ -152,6 +152,24 @@ GET /scorecard/:{id}
                     }
                 ]
             }
+        ],
+        "events": [
+          {
+            "$id": "218",
+            "id": 174,
+            "createddate": "2015-01-22T15:49:54.157",
+            "createdby": {
+                "$id": "219",
+                "id": 1,
+                "name": "system",
+                "email": "snna@bdo.no",
+                "imageurl": null,
+                "events": null
+            },
+            "type": 1,
+            "title": "50 igangsatte boliger pr år ble opprettet.",
+                "details": "laoreet lorem sit sed nonummy dolor diam ipsum elit"
+            }
         ]
     },
     {
@@ -228,6 +246,25 @@ GET /indicator/id
         "date": "2014-04-01T00:00:00",
         "value": 9256
     }
+  ],
+  "events": 
+  [
+    {
+      "$id": "218",
+      "id": 174,
+      "createddate": "2015-01-22T15:49:54.157",
+      "createdby": {
+          "$id": "219",
+          "id": 1,
+          "name": "system",
+          "email": "snna@bdo.no",
+          "imageurl": null,
+          "events": null
+      },
+      "type": 1,
+      "title": "50 igangsatte boliger pr år ble opprettet.",
+          "details": "laoreet lorem sit sed nonummy dolor diam ipsum elit"
+      }
   ]
 }
 
@@ -253,7 +290,26 @@ GET /task/:{id}
         "createdtime": "2014-12-11T22:12:19.927",
         "updatedtime": "2014-12-11T22:12:19.927",
         "createdby": null,
-        "updatedby": null
+        "updatedby": null,
+        "events": 
+        [
+          {
+            "$id": "218",
+            "id": 174,
+            "createddate": "2015-01-22T15:49:54.157",
+            "createdby": {
+                "$id": "219",
+                "id": 1,
+                "name": "system",
+                "email": "snna@bdo.no",
+                "imageurl": null,
+                "events": null
+            },
+            "type": 1,
+            "title": "50 igangsatte boliger pr år ble opprettet.",
+                "details": "laoreet lorem sit sed nonummy dolor diam ipsum elit"
+            }
+        ]
     },
     {
         "$id": "2",
@@ -266,8 +322,35 @@ GET /task/:{id}
         "tagstring": "50 igangsatte boliger pr år",
         "createdtime": "2014-12-11T22:12:20.087",
         "updatedtime": "2014-12-11T22:12:20.087",
-        "createdby": null,
-        "updatedby": null
+        "createdby": 
+          {
+            "$id": "219",
+            "id": 1,
+            "name": "system",
+            "email": "snna@bdo.no",
+            "imageurl": null,
+            "events": null
+          },
+        "updatedby": null,
+        "events": 
+        [
+          {
+            "$id": "218",
+            "id": 174,
+            "createddate": "2015-01-22T15:49:54.157",
+            "createdby": {
+                "$id": "219",
+                "id": 1,
+                "name": "system",
+                "email": "snna@bdo.no",
+                "imageurl": null,
+                "events": null
+            },
+            "type": 1,
+            "title": "50 igangsatte boliger pr år ble opprettet.",
+                "details": "laoreet lorem sit sed nonummy dolor diam ipsum elit"
+            }
+        ]
     },
 
 ```
