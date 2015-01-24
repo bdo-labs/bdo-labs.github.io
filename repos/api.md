@@ -14,7 +14,6 @@ The API's conform to a strict REST-structure, so their mostly interchangeable
 by just replacing the resource-part, all the subtle differences should be well
 documented.
 
-
 Security
 --------
 
@@ -22,6 +21,30 @@ All requests to the API should be over a TLS-connection using basic-auth.
 It has the cost of sending your token upon each request, but it makes it
 easier to test the API from the command-line etc.
 
+```http
+POST /service/AuthorizationService/token
+```
+The authorization service is a stand-alone API, loosely coupled to the rest of the user implementation. Notice that the content-type and payload type for getting a token is “x-www-form-urlencoded” so the payload body will be on form (grant_type=password&username=”test”&password=”testpassword”). If all is correct you’ll notice that we’ve received signed token on the response.
+
+```javascript
+{
+    "access_token": "70HGlj6Ct8VyS-_nzx1fGme8y629j1pX_C1LTJ9C482HrHdiQ4fQg111k9xcCBTZOwitH5yFOZUBNTD-pYtBUfQD4r6P3UpRH-dQ9KqTy9iOrwQjm2uTlaEUZYdA2fI3lSWqdU6MyYH0ww3x6QpnnH2kb8aSbB8UB7BCr5jTiSXUDQ5WDEB9WB3klaIMH_UglsmtAVoNbeNw_26NMx1z_4Xx9yRny4678depDfJgc2s",
+    "token_type": "bearer",
+    "expires_in": 86399
+}
+```
+
+In order to authenticate API calls the token the bearer token needs to be added in the requests Authorization header.
+
+```javascript
+Authorization : Bearer 70HGlj6Ct8VyS-_nzx1fGme8y629j1pX_C1LTJ9C482HrHdiQ4fQg111k9xcCBTZOwitH5yFOZUBNTD-pYtBUfQD4r6P3UpRH-dQ9KqTy9iOrwQjm2uTlaEUZYdA2fI3lSWqdU6MyYH0ww3x6QpnnH2kb8aSbB8UB7BCr5jTiSXUDQ5WDEB9WB3klaIMH_UglsmtAVoNbeNw_26NMx1z_4Xx9yRny4678depDfJgc2s
+```
+
+For testing purposes a secured resource is made available, with restricted access. The username, password, and token provided in this section can be used to gain access to the resource.
+
+```http
+GET /secured/
+```
 
 Tracing & debugging
 -------------------
