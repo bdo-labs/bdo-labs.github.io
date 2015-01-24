@@ -26,9 +26,7 @@ POST /service/AuthorizationService/token
 ```
 The authorization service is a stand-alone API, loosely coupled to the rest of the user implementation. Notice that the content-type and payload type for getting a token is “x-www-form-urlencoded” so the payload body will be on form
 ```javascript
-{
-    grant_type=password&username=”test”&password=”testpassword”&client_id="kEfz/BDu"
-}
+    grant_type=password&username="test"&password="testpassword"&client_id="kEfz/BDu"
 ```
 
 If the username, password, and client id is recognized we received signed token on the response.
