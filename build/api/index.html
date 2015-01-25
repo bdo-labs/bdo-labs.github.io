@@ -63,6 +63,29 @@ documented.</p>
 <p>All requests to the API should be over a TLS-connection using basic-auth.
 It has the cost of sending your token upon each request, but it makes it
 easier to test the API from the command-line etc.</p>
+<pre><code class="lang-http">POST /service/AuthorizationService/token
+</code></pre>
+<p>The authorization service is a stand-alone API, loosely coupled to the rest of the user implementation. Notice that the content-type and payload type for getting a token is “x-www-form-urlencoded” so the payload body will be on form</p>
+<pre><code class="lang-javascript">    grant_type=password&amp;username=&quot;test&quot;&amp;password=&quot;testpassword&quot;&amp;client_id=&quot;kEfz/BDu&quot;
+</code></pre>
+<p>If the username, password, and client id is recognized we received signed token on the response.</p>
+<pre><code class="lang-javascript">{
+    &quot;access_token&quot;: &quot;1dvcQiXhbfDW8ruqSFqqpZi8ZjiZRnDsZkBebZp4a62sGmrzLonP8a32m6qXnR7st668W0rmPgDoGVVjh8vwQltxG03R7LT0iDLX2drwdXIRIWeKp9q0IdZlyxDoGwcAEI4yr5Ew01U72ASPFp1KB5mcfqUKFWkNP-yO7OMRZgQNEzA7QS_QFrw8jhQqK33VajrEDW5GkWf4vUwt3iPYAY4-JHT-Mab4DiC1erbO3wKhlJua9r6MJrnEHEhHc-kZJuzsm_g_tdeoI1Kj2Qvfb7wXweQ&quot;,
+    &quot;token_type&quot;: &quot;bearer&quot;,
+    &quot;expires_in&quot;: 86399,
+    &quot;refresh_token&quot;: &quot;d595cd1d488045cca74bb2e3e5c63609&quot;,
+    &quot;as:client_id&quot;: &quot;kEfz/BDu&quot;,
+    &quot;userName&quot;: &quot;test&quot;,
+    &quot;.issued&quot;: &quot;Sat, 24 Jan 2015 14:08:14 GMT&quot;,
+    &quot;.expires&quot;: &quot;Sun, 25 Jan 2015 14:08:14 GMT&quot;
+}
+</code></pre>
+<p>In order to authenticate API calls the token the bearer token needs to be added in the requests Authorization header.</p>
+<pre><code class="lang-javascript">Authorization : Bearer 1dvcQiXhbfDW8ruqSFqqpZi8ZjiZRnDsZkBebZp4a62sGmrzLonP8a32m6qXnR7st668W0rmPgDoGVVjh8vwQltxG03R7LT0iDLX2drwdXIRIWeKp9q0IdZlyxDoGwcAEI4yr5Ew01U72ASPFp1KB5mcfqUKFWkNP-yO7OMRZgQNEzA7QS_QFrw8jhQqK33VajrEDW5GkWf4vUwt3iPYAY4-JHT-Mab4DiC1erbO3wKhlJua9r6MJrnEHEhHc-kZJuzsm_g_tdeoI1Kj2Qvfb7wXweQ
+</code></pre>
+<p>For testing purposes a secured resource is made available, with restricted access. The username, password, client id and token provided in this section can be used to gain access to the resource.</p>
+<pre><code class="lang-http">GET /secured/
+</code></pre>
 <h2 id="tracing-debugging">Tracing &amp; debugging</h2>
 <p>The use of an <code>Accepts-header</code> and returning both an <code>Etag</code> and a unique
 <code>Request-Id</code> will make debugging a lot easier, as you can trace it back and
@@ -107,9 +130,8 @@ client, much easier.</p>
   &quot;url&quot;: &quot;https://docs.presti.ge/rate-limits&quot;
 }
 </code></pre>
-<h4 id="retrieve-cards">Retrieve cards</h4>
-<p>Note that <code>/cards</code> is a short-hand for <code>/org/cards</code>.</p>
-<pre><code class="lang-http">GET /cards
+<h4 id="retrieve-scorecards">Retrieve scorecards</h4>
+<pre><code class="lang-http">GET /scorecard/:{id}
 </code></pre>
 <pre><code class="lang-javascript">{
         &quot;id&quot;: 1,
@@ -159,6 +181,24 @@ client, much easier.</p>
                     }
                 ]
             }
+        ],
+        &quot;events&quot;: [
+          {
+            &quot;$id&quot;: &quot;218&quot;,
+            &quot;id&quot;: 174,
+            &quot;createddate&quot;: &quot;2015-01-22T15:49:54.157&quot;,
+            &quot;createdby&quot;: {
+                &quot;$id&quot;: &quot;219&quot;,
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;system&quot;,
+                &quot;email&quot;: &quot;snna@bdo.no&quot;,
+                &quot;imageurl&quot;: null,
+                &quot;events&quot;: null
+            },
+            &quot;type&quot;: 1,
+            &quot;title&quot;: &quot;50 igangsatte boliger pr år ble opprettet.&quot;,
+                &quot;details&quot;: &quot;laoreet lorem sit sed nonummy dolor diam ipsum elit&quot;
+            }
         ]
     },
     {
@@ -176,43 +216,160 @@ client, much easier.</p>
         &quot;categories&quot;: [
 </code></pre>
 <h4 id="retrieve-an-indicator-object">Retrieve an indicator object</h4>
-<pre><code class="lang-http">GET /indicator/:{slug,id}?expand=owner
+<pre><code class="lang-http">GET /indicator/id
 </code></pre>
 <pre><code class="lang-javascript">{
-  &quot;id&quot;: &quot;72542b234523b...&quot;
-  &quot;category&quot;: &quot;økonomi&quot;,
-  &quot;title&quot;: &quot;omsetning&quot;,
-  &quot;direction&quot;: -1,
-  &quot;status&quot;: &quot;warning&quot;,
-  &quot;description&quot;: &quot;her kan det skrives tekst etter behov&quot;,
-  &quot;order&quot;: 1,
-  &quot;indicators&quot;: [
+  &quot;id&quot;: 4,
+  &quot;title&quot;: &quot;Oppslag i media&quot;,
+  &quot;description&quot;: null,
+  &quot;order&quot;: 0,
+  &quot;frequency&quot;: &quot;Monthly&quot;,
+  &quot;direction&quot;: &quot;Equal&quot;,
+  &quot;unit&quot;: &quot;&quot;,
+  &quot;value&quot;: 631889,
+  &quot;goal&quot;: 990694,
+  &quot;status&quot;: &quot;bad&quot;,
+  &quot;trend&quot;: &quot;down&quot;
+  &quot;values&quot;: 
+  [
     {
-      &quot;id&quot;: &quot;2345a23b5ab...&quot;,
-      &quot;frequency&quot;: &quot;monthly&quot;,
-      &quot;status&quot;: &quot;good&quot;,
-      &quot;direction&quot;: 1,
-      &quot;unit&quot;: &quot;nok&quot;,
-      &quot;tags&quot;: [&quot;foretaksservice&quot;],
-      &quot;create_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-      &quot;updated_at&quot;: &quot;2015-01-01T12:00:00Z&quot;,
-      &quot;owner&quot;: {
-        &quot;id&quot;: &quot;32bdd2b3...&quot;,
-        &quot;groups&quot;: [&quot;digitale tjenester&quot;,&quot;fest komité&quot;],
-        &quot;name&quot;: &quot;Snorre Nævdal&quot;,
-        &quot;email&quot;: &quot;snorre.naevdal@bdo.no&quot;,
-        &quot;created_at&quot;: &quot;2014-05-05T12:00:00Z&quot;,
-        &quot;updated_at&quot;: &quot;2014-05-05T12:00:00Z&quot;
-      },
-      &quot;payload&quot;: {
-        &quot;id&quot;: &quot;24643ba52b...&quot;
-      }
+        &quot;$id&quot;: &quot;2&quot;,
+        &quot;date&quot;: &quot;2014-01-01T00:00:00&quot;,
+        &quot;value&quot;: 1371
+    },
+    {
+        &quot;$id&quot;: &quot;3&quot;,
+        &quot;date&quot;: &quot;2014-02-01T00:00:00&quot;,
+        &quot;value&quot;: 4959
+    },
+    {
+        &quot;$id&quot;: &quot;4&quot;,
+        &quot;date&quot;: &quot;2014-03-01T00:00:00&quot;,
+        &quot;value&quot;: 4959
     }
+  ],
+  &quot;targets&quot;: 
+  [
+    {
+        &quot;$id&quot;: &quot;110&quot;,
+        &quot;date&quot;: &quot;2014-01-01T00:00:00&quot;,
+        &quot;value&quot;: 645
+    },
+    {
+        &quot;$id&quot;: &quot;111&quot;,
+        &quot;date&quot;: &quot;2014-02-01T00:00:00&quot;,
+        &quot;value&quot;: 4950
+    },
+    {
+        &quot;$id&quot;: &quot;112&quot;,
+        &quot;date&quot;: &quot;2014-03-01T00:00:00&quot;,
+        &quot;value&quot;: 4950
+    },
+    {
+        &quot;$id&quot;: &quot;113&quot;,
+        &quot;date&quot;: &quot;2014-04-01T00:00:00&quot;,
+        &quot;value&quot;: 9256
+    }
+  ],
+  &quot;events&quot;: 
+  [
+    {
+      &quot;$id&quot;: &quot;218&quot;,
+      &quot;id&quot;: 174,
+      &quot;createddate&quot;: &quot;2015-01-22T15:49:54.157&quot;,
+      &quot;createdby&quot;: {
+          &quot;$id&quot;: &quot;219&quot;,
+          &quot;id&quot;: 1,
+          &quot;name&quot;: &quot;system&quot;,
+          &quot;email&quot;: &quot;snna@bdo.no&quot;,
+          &quot;imageurl&quot;: null,
+          &quot;events&quot;: null
+      },
+      &quot;type&quot;: 1,
+      &quot;title&quot;: &quot;50 igangsatte boliger pr år ble opprettet.&quot;,
+          &quot;details&quot;: &quot;laoreet lorem sit sed nonummy dolor diam ipsum elit&quot;
+      }
   ]
 }
 </code></pre>
 <h4 id="retrieve-a-list-of-tasks">Retrieve a list of tasks</h4>
-<pre><code class="lang-http">GET /task/:{slug,id}?expand=owner,assignee
+<pre><code class="lang-http">GET /task/:{id}
+</code></pre>
+<pre><code class="lang-javascript">[
+    {
+        &quot;$id&quot;: &quot;1&quot;,
+        &quot;id&quot;: 17,
+        &quot;title&quot;: &quot;ut ut consectetuer dolor ipsum magna. elit diam ipsum elit dolore nibh. &quot;,
+        &quot;description&quot;: &quot;ut ut consectetuer dolor ipsum magna&quot;,
+        &quot;deadline&quot;: &quot;2014-12-11T22:12:19.847&quot;,
+        &quot;status&quot;: &quot;Ikke påbegynt&quot;,
+        &quot;priority&quot;: &quot;Lav&quot;,
+        &quot;tagstring&quot;: &quot;50 igangsatte boliger pr år&quot;,
+        &quot;createdtime&quot;: &quot;2014-12-11T22:12:19.927&quot;,
+        &quot;updatedtime&quot;: &quot;2014-12-11T22:12:19.927&quot;,
+        &quot;createdby&quot;: null,
+        &quot;updatedby&quot;: null,
+        &quot;events&quot;: 
+        [
+          {
+            &quot;$id&quot;: &quot;218&quot;,
+            &quot;id&quot;: 174,
+            &quot;createddate&quot;: &quot;2015-01-22T15:49:54.157&quot;,
+            &quot;createdby&quot;: {
+                &quot;$id&quot;: &quot;219&quot;,
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;system&quot;,
+                &quot;email&quot;: &quot;snna@bdo.no&quot;,
+                &quot;imageurl&quot;: null,
+                &quot;events&quot;: null
+            },
+            &quot;type&quot;: 1,
+            &quot;title&quot;: &quot;50 igangsatte boliger pr år ble opprettet.&quot;,
+                &quot;details&quot;: &quot;laoreet lorem sit sed nonummy dolor diam ipsum elit&quot;
+            }
+        ]
+    },
+    {
+        &quot;$id&quot;: &quot;2&quot;,
+        &quot;id&quot;: 18,
+        &quot;title&quot;: &quot;dolore adipiscing euismod laoreet sed elit. laoreet euismod adipiscing ut aliquam dolor. &quot;,
+        &quot;description&quot;: &quot;dolore adipiscing euismod laoreet sed elit laoreet euismod adipiscing ut aliquam dolor magna erat aliquam dolor euismod consectetuer elit euismod dolor aliquam ut adipiscing sit diam diam. amet magna nibh magna amet elit diam euismod euismod elit magna&quot;,
+        &quot;deadline&quot;: &quot;2014-12-11T22:12:19.847&quot;,
+        &quot;status&quot;: &quot;Påbegynt i rute&quot;,
+        &quot;priority&quot;: &quot;Lav&quot;,
+        &quot;tagstring&quot;: &quot;50 igangsatte boliger pr år&quot;,
+        &quot;createdtime&quot;: &quot;2014-12-11T22:12:20.087&quot;,
+        &quot;updatedtime&quot;: &quot;2014-12-11T22:12:20.087&quot;,
+        &quot;createdby&quot;: 
+          {
+            &quot;$id&quot;: &quot;219&quot;,
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;system&quot;,
+            &quot;email&quot;: &quot;snna@bdo.no&quot;,
+            &quot;imageurl&quot;: null,
+            &quot;events&quot;: null
+          },
+        &quot;updatedby&quot;: null,
+        &quot;events&quot;: 
+        [
+          {
+            &quot;$id&quot;: &quot;218&quot;,
+            &quot;id&quot;: 174,
+            &quot;createddate&quot;: &quot;2015-01-22T15:49:54.157&quot;,
+            &quot;createdby&quot;: {
+                &quot;$id&quot;: &quot;219&quot;,
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;system&quot;,
+                &quot;email&quot;: &quot;snna@bdo.no&quot;,
+                &quot;imageurl&quot;: null,
+                &quot;events&quot;: null
+            },
+            &quot;type&quot;: 1,
+            &quot;title&quot;: &quot;50 igangsatte boliger pr år ble opprettet.&quot;,
+                &quot;details&quot;: &quot;laoreet lorem sit sed nonummy dolor diam ipsum elit&quot;
+            }
+        ]
+    },
 </code></pre>
 <h4 id="retrieve-a-list-of-all-users-">Retrieve a list of all users.</h4>
 <pre><code class="lang-http">GET /users
