@@ -49,6 +49,7 @@ type alias Post =
 type Msg
     = NextPost
     | PreviousPost
+    | GotoPost Post
 
 
 update msg model =
@@ -68,6 +69,14 @@ update msg model =
 
                 Nothing ->
                     { model | posts = List.Zipper.last model.posts }
+
+        GotoPost post ->
+            case (List.Zipper.find (\p -> p == post) model.posts) of
+                Just posts ->
+                    { model | posts = posts }
+
+                Nothing ->
+                    { model | posts = List.Zipper.first model.posts }
 
 
 

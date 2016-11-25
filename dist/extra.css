@@ -1,0 +1,19 @@
+
+.Timeline > .TimelineItem {
+    transform-origin: left center;
+    transition: .2s ease;
+}
+
+.Timeline > .TimelineItem:before {
+    content: ' ';
+    transition: .2s ease;
+}
+
+h1:after {
+    content: ' ';
+}
+
+footer {
+    transition: 1s ease;
+    transform: translateZ(0);
+}

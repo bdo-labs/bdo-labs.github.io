@@ -7,7 +7,7 @@ import Author
 
 import Html exposing (div)
 import Html.Attributes exposing (class)
-import Markdown
+import Markdown exposing (Options, defaultOptions)
 import Css exposing (..)
 import Css.Elements as Tag
 import Css.Namespace exposing (namespace)
@@ -30,12 +30,21 @@ css =
         ]
 
 
+options : Options
+options =
+    { defaultOptions | smartypants = True }
+
+
 intro =
-    Markdown.toHtml [] """
+    Markdown.toHtmlWith options [] """
 
 # Introducing Labs
 
 I guess this would be our initial post?
+
+```javascript
+var foo = "bar";
+```
 
 """
 
