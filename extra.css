@@ -1,0 +1,72 @@
+
+.Wrapper {
+    transition: background .5s ease;
+}
+
+a {
+    transition: .2s ease;
+}
+
+em {
+    font-size: 0.7em;
+}
+
+.Light,
+.Dark {
+    min-height: 100%;
+}
+
+.LightSwitch:after {
+    conten: ' ';
+    transition: .6s ease;
+}
+
+.Timeline > .TimelineItem {
+    transform-origin: left center;
+    transition: .2s ease;
+}
+
+.Timeline > .TimelineItem:before {
+    content: ' ';
+    transition: .2s ease;
+}
+
+h1:after {
+    content: ' ';
+}
+
+footer {
+    transition: 1s ease;
+    transform: translateZ(0);
+}
+
+.Photo {
+    transform-origin: left top;
+}
+
+.Social {
+    transform-origin: left top;
+}
+
+svg > path {
+    box-shadow: 0 4px 3px rgba(192,95,6,0.8);
+}
+
+.Dark iframe {
+    background-color: rgb(240,240,240);
+}
+
+iframe {
+    background-color: rgb(40,40,40);
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(30,35,40,.5);
+    padding: 1em;
+    transform: scale(0.97);
+    transition: .2s ease;
+}
+iframe:hover {
+    box-shadow: 0 10px 10px rgba(30,35,40,.5);
+    transform: scale(1);
+}
+

@@ -1,0 +1,278 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-family: Roboto, Open Sans, Helvetica Neue, Helvetica;
+}
+
+a {
+    color: rgb(130, 130, 130);
+}
+
+a:hover {
+    color: rgb(80, 80, 80);
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+.Wrapper {
+    height: 100%;
+    overflow: auto;
+}
+
+.Logo {
+    transform: scale(0.5);
+}
+
+.Flex {
+    flex: 1;
+}
+
+.Light {
+    background-color: rgb(245, 245, 245);
+    color: rgb(40, 40, 40);
+}
+
+.Light  pre {
+    background-color: rgb(47, 30, 46);
+    color: rgb(163, 158, 155);
+}
+
+.Biography {
+    font-size: 0.5em;
+}
+
+.Dark {
+    background-color: rgb(27, 35, 44);
+    color: rgb(235, 235, 225);
+}
+
+.Dark  pre {
+    background-color: rgb(231, 233, 219);
+    color: rgb(79, 66, 76);
+}
+
+.Dark  .LightSwitch {
+    color: rgb(255, 255, 255);
+}
+
+.Dark  .Social {
+    background-color: rgb(20, 20, 20);
+}
+
+.Dark  a:hover {
+    color: rgb(250, 250, 250);
+}
+
+h1::after {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.2);
+    line-height: 2;
+    width: 4em;
+    height: 0.1em;
+    margin: 1em 0;
+}
+
+h2, h3, h4, h5 {
+    margin-top: 2em;
+}
+
+pre {
+    font-family: Fira Code, Monaco, Monospace;
+    padding: 1em;
+    border-radius: 0.1em;
+}
+
+footer {
+    opacity: 0.4;
+    font-size: 0.6em;
+    flex: none;
+    padding: 50px;
+}
+
+footer:hover {
+    opacity: 1;
+}
+
+footer > a {
+    display: inline-block;
+    padding: 0 1em;
+}
+
+.LightSwitch {
+    border-style: none;
+    background-color: transparent;
+    position: absolute;
+    font-size: 1em;
+    right: 50px;
+    top: 50px;
+}
+
+.LightSwitch::after {
+    display: block;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    width: 4px;
+    height: 1px;
+    background-color: rgb(255, 255, 220);
+    box-shadow: 0 0 10px 2px rgb(255, 255, 220);
+    opacity: 0;
+}
+
+.LightSwitch:hover::after {
+    opacity: 1;
+}
+
+.Photo {
+    border-radius: 0.2em;
+    overflow: hidden;
+    width: 100px;
+}
+
+.Author {
+    margin-top: 3em;
+    align-items: center;
+}
+
+.Author > div {
+    margin-left: 1em;
+}
+
+.Author > small {
+    margin-left: 1em;
+}
+
+.Published {
+    font-size: 0.6em;
+    margin-left: 1em;
+    color: rgb(145, 145, 145);
+}
+
+.Social {
+    padding: 0.1em 0.2em;
+    border-radius: 0.8em;
+    background-color: rgb(255, 255, 255);
+    align-self: flex-start;
+    transform: scale(0.75);
+}
+
+.Social > a {
+    display: inline-block;
+    margin: 0 0.5em;
+}
+
+.Column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.Row {
+    display: flex;
+    flex-direction: row;
+}
+
+.Container {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.Timeline {
+    list-style: none;
+    font-size: 0.8em;
+    padding: 50px;
+    position: relative;
+    margin: 0;
+}
+
+.Timeline > .TimelineItem {
+    display: block;
+    cursor: pointer;
+}
+
+@media screen and ( max-width: 1279px ) {
+        .Container {
+    position: relative;
+}
+}
+
+@media screen and ( max-width: 1279px ) {
+        .Dark  .Timeline {
+    border-bottom: 1px solid rgb(50, 50, 50);
+}
+}
+
+@media screen and ( max-width: 1279px ) {
+        .Dark  .TimelineItem:hover {
+    color: rgb(80, 80, 80);
+}
+}
+
+@media screen and ( max-width: 1279px ) {
+        .Timeline {
+    background-color: rgb(245, 245, 245);
+    border-radius: 0.2em;
+    margin: 25px;
+    padding: 25px;
+    max-height: 10em;
+    overflow: auto;
+}
+}
+
+@media screen and ( min-width: 1280px ) {
+        .Timeline {
+    position: fixed;
+    font-size: 0.7vw;
+    top: 0;
+}
+}
+
+@media screen and ( min-width: 1280px ) {
+        .Timeline > .TimelineItem {
+    position: relative;
+    padding: 0.25em 4em 0.25em 4em;
+}
+}
+
+@media screen and ( min-width: 1280px ) {
+        .Timeline > .TimelineItem::before {
+    background-color: rgba(0, 0, 0, 0.2);
+    left: 0;
+    top: 50%;
+    display: block;
+    width: 3em;
+    height: 0.2em;
+    position: absolute;
+}
+}
+
+@media screen and ( min-width: 1280px ) {
+        .Timeline > .TimelineItem:hover {
+    transform: scale(1.8);
+}
+}
+
+@media screen and ( min-width: 1280px ) {
+        .Timeline > .TimelineItem:hover::before {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+}
+
+@media screen and ( min-width: 1280px ) {
+        .Timeline > .TimelineItem:hover + .TimelineItem {
+    transform: scale(1.4);
+}
+}
