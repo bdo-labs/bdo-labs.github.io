@@ -1,9 +1,9 @@
 module Posts exposing (..)
 
 import Author exposing (..)
-import Post.HavingFunCoding as HavingFunCoding
-import Post.IntroducingLabs as IntroducingLabs
+import Post.WeChooseClojure as WeChooseClojure
 import List.Zipper exposing (Zipper)
+import String exposing (startsWith)
 import Maybe
 
 
@@ -17,12 +17,14 @@ notFound =
     { title = "Not Found"
     , content = div [] [ text "The post you are looking for is not here" ]
     , draft = False
+    , date = "November 25, 2016"
     , author = foo
     }
 
 
 type alias Model =
     { posts : Zipper Post
+    , light : Bool
     }
 
 
@@ -31,10 +33,10 @@ model =
         List.Zipper.withDefault
             notFound
             (List.Zipper.fromList
-                [ HavingFunCoding.post
-                , IntroducingLabs.post
+                [ WeChooseClojure.post
                 ]
             )
+    , light = True
     }
 
 
@@ -42,6 +44,7 @@ type alias Post =
     { title : String
     , content : Html Msg
     , draft : Bool
+    , date : String
     , author : Author
     }
 
@@ -50,6 +53,7 @@ type Msg
     = NextPost
     | PreviousPost
     | GotoPost Post
+    | ToggleLight
 
 
 update msg model =
@@ -71,12 +75,19 @@ update msg model =
                     { model | posts = List.Zipper.last model.posts }
 
         GotoPost post ->
-            case (List.Zipper.find (\p -> p == post) model.posts) of
+            case
+                (List.Zipper.first model.posts
+                    |> List.Zipper.find (\p -> p == post)
+                )
+            of
                 Just posts ->
                     { model | posts = posts }
 
                 Nothing ->
                     { model | posts = List.Zipper.first model.posts }
+
+        ToggleLight ->
+            { model | light = (not model.light) }
 
 
 

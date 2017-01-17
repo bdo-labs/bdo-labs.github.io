@@ -26,8 +26,8 @@ henrik : Author
 henrik =
     { firstname = "Henrik"
     , lastname = "Kjerringvåg"
-    , email = "hekj@bdo.no"
-    , bio = Nothing
+    , email = "hkjels@me.com"
+    , bio = Just "Design-Oriented Functional Programmer & Pentester"
     , twitter = Just "hkjels"
     , github = Just "hkjels"
     }

@@ -1,8 +1,6 @@
 port module Stylesheets exposing (..)
 
-import Post.HavingFunCoding as HavingFunCoding
-
-
+-- import Post.HavingFunCoding as HavingFunCoding
 --
 
 import Css exposing (..)
@@ -17,37 +15,93 @@ type CssClasses
     | Timeline
     | TimelineItem
     | Column
+    | Row
     | Photo
+    | Author
+    | Social
+    | LightSwitch
+    | Light
+    | Dark
+    | Spread
+    | Wrapper
+    | Published
+    | Biography
+    | Flex
+    | Logo
 
 
 shared =
     (stylesheet)
-        [ Tag.html [ height (pct 100) ]
-        , Tag.body
-            [ width (pct 100)
-            , height (pct 100)
-            , color (rgb 40 40 40)
-            , backgroundColor (rgb 245 245 245)
-            , margin zero
+        [ each [ Tag.html, Tag.body ]
+            [ margin zero
             , padding zero
+            , height (pct 100)
+            ]
+        , Tag.body
+            [ overflow hidden
             , fontSize (em 1.5)
             , lineHeight (em 1.5)
             , fontFamilies [ "Roboto", "Open Sans", "Helvetica Neue", "Helvetica" ]
             ]
+        , Tag.a
+            [ color (rgb 130 130 130)
+            , hover
+                [ color (rgb 80 80 80) ]
+            ]
+        , Tag.button
+            [ cursor pointer
+            , outline none
+            ]
+        , (.) Wrapper
+            [ height (pct 100)
+            , overflow auto
+            ]
+        , (.) Logo
+            [ transform (scale 0.5) ]
+        , (.) Flex
+            [ flex (num 1) ]
+        , (.) Light
+            [ backgroundColor (rgb 245 245 245)
+            , color (rgb 40 40 40)
+            , descendants
+                [ Tag.pre
+                    [ backgroundColor (rgb 47 30 46)
+                    , color (rgb 163 158 155)
+                    ]
+                ]
+            ]
+        , (.) Biography
+            [ fontSize (em 0.5)
+            ]
+        , (.) Dark
+            [ backgroundColor (rgb 27 35 44)
+            , color (rgb 235 235 225)
+            , descendants
+                [ Tag.pre
+                    [ backgroundColor (rgb 231 233 219)
+                    , color (rgb 79 66 76)
+                    ]
+                , (.) LightSwitch
+                    [ color (rgb 255 255 255) ]
+                , (.) Social
+                    [ backgroundColor (rgb 20 20 20) ]
+                , Tag.a [ hover [ color (rgb 250 250 250) ] ]
+                ]
+            ]
         , Tag.h1
             [ after
                 [ display block
-                , backgroundColor (rgba 0 0 0 0.1)
+                , backgroundColor (rgba 0 0 0 0.2)
                 , lineHeight (int 2)
                 , width (em 4)
                 , height (em 0.1)
                 , margin2 (em 1) zero
                 ]
             ]
+        , each [ Tag.h2, Tag.h3, Tag.h4, Tag.h5 ]
+            [ marginTop (em 2) ]
         , Tag.pre
-            [ backgroundColor (rgb 47 30 46)
-            , color (rgb 163 158 155)
-            , fontFamilies [ "Fira Code", "Monaco", "Monospace" ]
+            [ fontFamilies [ "Fira Code", "Monaco", "Monospace" ]
             , padding (em 1)
             , borderRadius (em 0.1)
             ]
@@ -65,20 +119,78 @@ shared =
                     ]
                 ]
             ]
+        , (.) LightSwitch
+            [ borderStyle none
+            , backgroundColor transparent
+            , position absolute
+            , fontSize (em 1)
+            , right (px 50)
+            , top (px 50)
+            , after
+                [ display block
+                , top (px 14)
+                , left (pct 50)
+                , transform (translateX (pct -50))
+                , position absolute
+                , width (px 4)
+                , height (px 1)
+                , backgroundColor (rgb 255 255 220)
+                , boxShadow5 zero zero (px 10) (px 2) (rgb 255 255 220)
+                , opacity (num 0)
+                ]
+            , hover
+                [ after
+                    [ opacity (num 1)
+                    ]
+                ]
+            ]
         , (.) Photo
-            [ borderRadius (pct 50)
-            , transform (scale 0.5)
+            [ borderRadius (em 0.2)
+            , overflow hidden
+            , width (px 100)
+            ]
+        , (.) Author
+            [ marginTop (em 3)
+            , alignItems center
+            , children
+                [ Tag.div [ marginLeft (em 1) ]
+                , Tag.small
+                    [ marginLeft (em 1)
+                    ]
+                ]
+            ]
+        , (.) Published
+            [ fontSize (em 0.6)
+            , marginLeft (em 1)
+            , color (rgb 145 145 145)
+            ]
+        , (.) Social
+            [ padding2 (em 0.1) (em 0.2)
+            , borderRadius (em 0.8)
+            , backgroundColor (rgb 255 255 255)
+            , alignSelf flexStart
+            , transform (scale 0.75)
+            , children
+                [ Tag.a
+                    [ display inlineBlock
+                    , margin2 zero (em 0.5)
+                    ]
+                ]
             ]
         , (.) Column
             [ (displayFlex)
             , flexDirection column
             , height (pct 100)
             ]
+        , (.) Row
+            [ (displayFlex)
+            , flexDirection row
+            ]
         , (.) Container
             [ maxWidth (px 700)
+            , width (pct 100)
             , margin2 zero auto
             , padding (px 50)
-            , flex (int 1)
             ]
         , (.) Timeline
             [ listStyle none
@@ -94,39 +206,37 @@ shared =
                 ]
             ]
         , mediaQuery "screen and ( max-width: 1279px )"
-            [ (.) Timeline
-                [ backgroundColor (rgb 47 30 46)
-                , maxHeight (em 10)
-                , color (rgb 213 208 205)
-                , overflow auto
-                , boxShadow5 inset zero (px -8) (px 8) (rgba 27 10 26 0.6)
-                , after
-                    [ display block
-                    , position fixed
-                    , bottom zero
-                    , left zero
-                    , width (pct 100)
-                    , height (em 2)
+            [ (.) Container [ position relative ]
+            , (.) Dark
+                [ descendants
+                    [ (.) Timeline
+                        [ borderBottom3 (px 1) solid (rgb 50 50 50) ]
+                    , (.) TimelineItem
+                        [ hover
+                            [ color (rgb 80 80 80) ]
+                        ]
                     ]
                 ]
-            , (.) TimelineItem
-                [ hover
-                    [ color (rgb 253 248 245) ]
+            , (.) Timeline
+                [ backgroundColor (rgb 245 245 245)
+                , borderRadius (em 0.2)
+                , margin (px 25)
+                , padding (px 25)
+                , maxHeight (em 10)
+                , overflow auto
                 ]
             ]
         , mediaQuery "screen and ( min-width: 1280px )"
             [ (.) Timeline
                 [ position fixed
-                , fontSize (vw 1.5)
+                , fontSize (vw 0.7)
                 , top zero
                 , children
                     [ (.) TimelineItem
-                        [ transform (scale 0.5)
-                        , position relative
-                        , paddingLeft (em 4)
-                        , margin2 (em 0.25) zero
+                        [ position relative
+                        , padding4 (em 0.25) (em 4) (em 0.25) (em 4)
                         , before
-                            [ backgroundColor (rgba 0 0 0 0.1)
+                            [ backgroundColor (rgba 0 0 0 0.2)
                             , left zero
                             , top (pct 50)
                             , display block
@@ -135,9 +245,13 @@ shared =
                             , position absolute
                             ]
                         , hover
-                            [ transform (scale 1)
+                            [ transform (scale 1.8)
                             , before
                                 [ backgroundColor (rgba 0 0 0 0.5) ]
+                            , adjacentSiblings
+                                [ (.) TimelineItem
+                                    [ transform (scale 1.4) ]
+                                ]
                             ]
                         ]
                     ]
@@ -151,7 +265,14 @@ port files : CssFileStructure -> Cmd msg
 
 cssFiles : CssFileStructure
 cssFiles =
-    toFileStructure [ ( "dist/main.css", Css.File.compile [ shared, HavingFunCoding.css ] ) ]
+    toFileStructure
+        [ ( "dist/main.css"
+          , Css.File.compile
+                [ shared
+                  -- , HavingFunCoding.css
+                ]
+          )
+        ]
 
 
 main : Program Never () msg
