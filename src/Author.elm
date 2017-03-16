@@ -42,3 +42,13 @@ andreas =
     , twitter = Nothing
     , github = Nothing
     }
+
+    mats : Author
+    mats =
+        { firstname = "Mats"
+        , lastname = "Braa"
+        , email = "mab1@bdo.no"
+        , bio = Just "Fullstack developer with :green_heart: for mobile development"
+        , twitter = Nothing
+        , github = Just "matsbraa"
+        }

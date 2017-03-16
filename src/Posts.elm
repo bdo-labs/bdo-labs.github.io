@@ -2,6 +2,7 @@ module Posts exposing (..)
 
 import Author exposing (..)
 import Post.WeChooseClojure as WeChooseClojure
+import Post.GitWorkflow as GitWorkFlow
 import List.Zipper exposing (Zipper)
 import String exposing (startsWith)
 import Maybe
@@ -33,7 +34,8 @@ model =
         List.Zipper.withDefault
             notFound
             (List.Zipper.fromList
-                [ WeChooseClojure.post
+                [ WeChooseClojure.post,
+                  GitWorkFlow.post
                 ]
             )
     , light = True
