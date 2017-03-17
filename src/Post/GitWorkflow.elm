@@ -1,4 +1,4 @@
-module Post.WeChooseClojure exposing (post)
+module Post.GitWorkflow exposing (post)
 
 import Author
 
