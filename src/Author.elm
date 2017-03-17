@@ -1,4 +1,4 @@
-module Author exposing (Author, foo, henrik)
+module Author exposing (Author, foo, henrik, andreas, mats)
 
 
 type alias Author =
@@ -43,12 +43,12 @@ andreas =
     , github = Nothing
     }
 
-    mats : Author
-    mats =
-        { firstname = "Mats"
-        , lastname = "Braa"
-        , email = "mab1@bdo.no"
-        , bio = Just "Fullstack developer with :green_heart: for mobile development"
-        , twitter = Nothing
-        , github = Just "matsbraa"
-        }
+mats : Author
+mats =
+    { firstname = "Mats"
+    , lastname = "Braa"
+    , email = "mab1@bdo.no"
+    , bio = Just "Fullstack developer with :green_heart: for mobile development"
+    , twitter = Nothing
+    , github = Just "matsbraa"
+    }

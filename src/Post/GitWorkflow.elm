@@ -14,7 +14,7 @@ import Css.Namespace exposing (namespace)
 
 
 ns =
-    "weChooseClojureScript"
+    "GitWorkflow"
 
 
 intro =
@@ -65,9 +65,9 @@ content =
 
 
 post =
-    { title = "We Choose ClojureScript"
+    { title = "Git workflow"
     , content = content
     , draft = False
-    , date = "Januar 17, 2017"
-    , author = Author.henrik
+    , date = "March 17, 2017"
+    , author = Author.mats
     }
