@@ -1,0 +1,19 @@
+#+TITLE: Reimagined.io
+#+SUBTITLE: The Blog of the Digital Minds of BDO Norway
+
+* Usage
+
+To compile this static blog, you'll need [[http://elm-lang.org][Elm]]. Once Elm is installed,
+you can run:
+
+#+BEGIN_SRC shell
+elm make src/Main.elm --output dist/main.js && elm css src/Stylesheets.elm
+#+END_SRC
+
+to compile everything needed into the dist directory.
+
+
+* Creating a new post
+   
+** TODO Create a Template
+
